@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceRace", "SpaceRace\SpaceRace.csproj", "{26E66E71-6C96-4E5D-9DC1-824DAE6FDC40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{925512E4-0155-4903-8655-DFA16FE3B176}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Controller.csproj", "{79F9242D-C1A1-4058-9633-47D05CFDBFFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26E66E71-6C96-4E5D-9DC1-824DAE6FDC40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26E66E71-6C96-4E5D-9DC1-824DAE6FDC40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26E66E71-6C96-4E5D-9DC1-824DAE6FDC40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26E66E71-6C96-4E5D-9DC1-824DAE6FDC40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{925512E4-0155-4903-8655-DFA16FE3B176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{925512E4-0155-4903-8655-DFA16FE3B176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{925512E4-0155-4903-8655-DFA16FE3B176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{925512E4-0155-4903-8655-DFA16FE3B176}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79F9242D-C1A1-4058-9633-47D05CFDBFFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79F9242D-C1A1-4058-9633-47D05CFDBFFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79F9242D-C1A1-4058-9633-47D05CFDBFFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79F9242D-C1A1-4058-9633-47D05CFDBFFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {33A93BC8-A826-4883-B556-1C8D4E58A208}
+	EndGlobalSection
+EndGlobal
