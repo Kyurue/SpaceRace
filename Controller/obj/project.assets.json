@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Model.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Model/1.0.0": {
+      "type": "project",
+      "path": "../Model/Model.csproj",
+      "msbuildProject": "../Model/Model.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "Model >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\migl3\\.nuget\\packages\\": {}
@@ -13,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\migl3\\source\\repos\\SpaceRaceProject\\Controller\\Controller.csproj",
+      "projectUniqueName": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Controller\\Controller.csproj",
       "projectName": "Controller",
-      "projectPath": "C:\\Users\\migl3\\source\\repos\\SpaceRaceProject\\Controller\\Controller.csproj",
+      "projectPath": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Controller\\Controller.csproj",
       "packagesPath": "C:\\Users\\migl3\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\migl3\\source\\repos\\SpaceRaceProject\\Controller\\obj\\",
+      "outputPath": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Controller\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\migl3\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -33,7 +52,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Model\\Model.csproj": {
+              "projectPath": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Model\\Model.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

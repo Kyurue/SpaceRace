@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zafMeWz9dlGKtYHextPjeWFnS9I+bZww+UKefz0jSfZwsDkAvfCf1jsiBzHWq+ZxSUlNRWlWkIX41DYAa4IK6w==",
+  "dgSpecHash": "txFuFtSVDUya15BGpwvYWU34X6U5CrAAy5cbETbpe5Bu9Z8Tnrqe9pXys8pHHHilCAJP/wzmLg/ZGTNcBTvzQA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\migl3\\source\\repos\\SpaceRaceProject\\Controller\\Controller.csproj",
+  "projectFilePath": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Controller\\Controller.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

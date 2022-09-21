@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\migl3\\source\\repos\\SpaceRaceProject\\Model\\Model.csproj": {}
+    "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Model\\Model.csproj": {}
   },
   "projects": {
-    "C:\\Users\\migl3\\source\\repos\\SpaceRaceProject\\Model\\Model.csproj": {
+    "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Model\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\migl3\\source\\repos\\SpaceRaceProject\\Model\\Model.csproj",
+        "projectUniqueName": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Model\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "C:\\Users\\migl3\\source\\repos\\SpaceRaceProject\\Model\\Model.csproj",
+        "projectPath": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Model\\Model.csproj",
         "packagesPath": "C:\\Users\\migl3\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\migl3\\source\\repos\\SpaceRaceProject\\Model\\obj\\",
+        "outputPath": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\migl3\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceRace", "SpaceRace\SpaceRace.csproj", "{26E66E71-6C96-4E5D-9DC1-824DAE6FDC40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceRace", "SpaceRace\SpaceRace.csproj", "{26E66E71-6C96-4E5D-9DC1-824DAE6FDC40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{925512E4-0155-4903-8655-DFA16FE3B176}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{925512E4-0155-4903-8655-DFA16FE3B176}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Controller.csproj", "{79F9242D-C1A1-4058-9633-47D05CFDBFFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controller", "Controller\Controller.csproj", "{79F9242D-C1A1-4058-9633-47D05CFDBFFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerTest", "ControllerTest\ControllerTest.csproj", "{7206ECA9-266C-46FB-B6A6-2B83F8D3ACB6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{79F9242D-C1A1-4058-9633-47D05CFDBFFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79F9242D-C1A1-4058-9633-47D05CFDBFFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79F9242D-C1A1-4058-9633-47D05CFDBFFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7206ECA9-266C-46FB-B6A6-2B83F8D3ACB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7206ECA9-266C-46FB-B6A6-2B83F8D3ACB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7206ECA9-266C-46FB-B6A6-2B83F8D3ACB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7206ECA9-266C-46FB-B6A6-2B83F8D3ACB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
