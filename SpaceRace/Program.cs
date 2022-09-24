@@ -1,16 +1,17 @@
 ﻿using Controller;
+using SpaceRace;
+
 class Program
 {
     static void Main(string[] args)
     {
         Data.Initialize();
         Data.NextRace();
-        Console.Write(Data.CurrentRace.Track.Name);
+        Visualize.DrawTrack(Data.CurrentRace.Track);
         for (; ; )
         {
             Thread.Sleep(100);
         }
-
 
     }
 }

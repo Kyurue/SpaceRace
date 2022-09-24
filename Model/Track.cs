@@ -16,14 +16,14 @@
         {
             if (sections != null)
             {
-                return null;
+                LinkedList<Section> linkedList = new LinkedList<Section>();
+                foreach (var section in sections)
+                {
+                    linkedList.AddLast(new Section(section));
+                }
+                return linkedList;
             }
-            LinkedList<Section> linkedList = new LinkedList<Section>();
-            foreach (var section in sections)
-            {
-                linkedList.AddLast(new Section(section));
-            }
-            return linkedList;
+            return null;
         }
     }
 }

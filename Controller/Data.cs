@@ -36,27 +36,32 @@ namespace Controller
             Competition.Tracks.Enqueue(new Track("Track1", new SectionTypes[]
                                     {
                                         SectionTypes.StartGrid,
-                                        SectionTypes.Straight,
-                                        SectionTypes.Straight,
+                                        SectionTypes.StartGrid,
+                                        SectionTypes.RightCorner,
                                         SectionTypes.LeftCorner,
+                                        SectionTypes.RightCorner,
+                                        SectionTypes.RightCorner,
+                                        SectionTypes.Straight,
+                                        SectionTypes.Straight,
+                                        SectionTypes.Straight,
                                         SectionTypes.Straight,
                                         SectionTypes.RightCorner,
                                         SectionTypes.Straight,
+                                        SectionTypes.RightCorner,
                                         SectionTypes.Finish
                                     }));
 
             Competition.Tracks.Enqueue(new Track("Track2", new SectionTypes[]
                                    {
                                         SectionTypes.StartGrid,
-                                        SectionTypes.LeftCorner,
-                                        SectionTypes.Straight,
+                                        SectionTypes.StartGrid,
+                                        SectionTypes.RightCorner,
                                         SectionTypes.RightCorner,
                                         SectionTypes.Straight,
+                                        SectionTypes.Straight,
+                                        SectionTypes.Straight,
                                         SectionTypes.RightCorner,
-                                        SectionTypes.Straight,
-                                        SectionTypes.Straight,
-                                        SectionTypes.LeftCorner,
-                                        SectionTypes.Straight,
+                                        SectionTypes.RightCorner,
                                         SectionTypes.Finish
                                    }));
         }

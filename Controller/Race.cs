@@ -14,7 +14,7 @@ namespace Controller
         public Track Track { get; set; }
         public List<IParticipant> Participants { get; set; }
         public DateTime StartTime { get; set; }
-        private Random _random { get; set; }
+        private Random _random;
         private Dictionary<Section, SectionData> _positions;
 
         public SectionData GetSectionData(Section section)

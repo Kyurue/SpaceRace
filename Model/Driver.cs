@@ -17,7 +17,7 @@ namespace Model
             Teamcolour = teamcolor;
         }
 
-        public string Name { get ; set; }
+        public string Name { get ; private set; }
         public int Points { get; set; }
         public IEquipment Equipment { get; set; }
         public TeamColours Teamcolour { get; set; }

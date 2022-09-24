@@ -32,12 +32,19 @@ namespace ControllerTest
                                    {
                                         SectionTypes.StartGrid,
                                         SectionTypes.Straight,
-                                        SectionTypes.Straight,
+                                        SectionTypes.RightCorner,
                                         SectionTypes.LeftCorner,
+                                        SectionTypes.RightCorner,
+                                        SectionTypes.RightCorner,
+                                        SectionTypes.Straight,
+                                        SectionTypes.Straight,
+                                        SectionTypes.Straight,
+                                        SectionTypes.Straight,
                                         SectionTypes.Straight,
                                         SectionTypes.RightCorner,
                                         SectionTypes.Straight,
-                                        SectionTypes.Finish
+                                        SectionTypes.RightCorner,
+                                        SectionTypes.Finish,
                                    });
             _competition.Tracks.Enqueue(track);
             Track result = _competition.NextTrack();
