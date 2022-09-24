@@ -28,11 +28,12 @@ namespace SpaceRace
         {
             int[] location = new int[2] {0, 0};
             Rotation rotation = Rotation.East;
-            foreach (Section section in track.Sections)
+            var current = track.Sections.First;
+            while (current != null)
             {
-                section.direction = rotation;
-                section.Location = location;
-                switch (section.SectionType)
+                current.Value.direction = rotation;
+                current.Value.Location = new int[]{ location[0], location[1] }; // <---- fixed you bug on this line
+                switch (current.Value.SectionType)
                 {
                     case SectionTypes.RightCorner:
                         rotation = Rotate(rotation, true);
@@ -41,13 +42,39 @@ namespace SpaceRace
                         rotation = Rotate(rotation, false);
                         break;
                 }
-                Console.WriteLine("Direction: " + section.direction);
-                Console.WriteLine("X: " + section.Location[0]);
-                Console.WriteLine("Y: " + section.Location[1]);
-                Console.WriteLine(" ");
+                if (location[0] < 0 || location[1] < 0)
+                    location = ShiftSections(current, track.Sections);
                 location = ChangeLocation(location, rotation);
+                current = current.Next;
             }
-            
+            FixPosition(track);
+        }
+
+        /// <summary>
+        /// function added by Jens.
+        /// the goal of this function is to shift all previous sections by 1 in either the X or Y axes
+        /// </summary>
+        /// <param name="current">
+        /// the last section you wish to change its position of
+        /// all sections bevore and this one will be updated
+        /// </param>
+        /// <param name="list">
+        /// the full list of section you wish to edit
+        /// </param>
+        /// <returns>
+        /// returns an updated position to continue off
+        /// </returns>
+        private static int[] ShiftSections(LinkedListNode<Section> current, LinkedList<Section> list)
+        {
+            var currentSection = list.First;
+            while (currentSection != null && currentSection.Value != current.Next.Value)
+            {
+                for (int i = 0; i <= 1; i++)
+                    currentSection.Value.Location[i] = current.Value.Location[i] < 0 ? currentSection.Value.Location[i] + 1 : currentSection.Value.Location[i];
+
+                currentSection = currentSection.Next;
+            }
+            return current.Value.Location;
         }
         
         public static Rotation Rotate(Rotation rotation, Boolean RightCorner)
