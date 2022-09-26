@@ -7,6 +7,7 @@ class Program
     {
         Data.Initialize();
         Data.NextRace();
+        Visualize.SetLocation(Data.CurrentRace.Track);
         Visualize.DrawTrack(Data.CurrentRace.Track);
         for (; ; )
         {

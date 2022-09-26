@@ -26,13 +26,24 @@ namespace SpaceRace
 
         public static void DrawTrack(Track track)
         {
-            int[] location = new int[2] {0, 0};
+            foreach(var section in track.Sections)
+            {
+                Console.WriteLine("Direction: " + section.direction);
+                Console.WriteLine("X: " + section.Location[0]);
+                Console.WriteLine("Y: " + section.Location[1]);
+                Console.WriteLine(" ");
+            }
+        }
+
+        public static void SetLocation(Track track)
+        {
+            int[] location = new int[2] { 0, 0 };
             Rotation rotation = Rotation.East;
             var current = track.Sections.First;
             while (current != null)
             {
                 current.Value.direction = rotation;
-                current.Value.Location = new int[]{ location[0], location[1] }; // <---- fixed you bug on this line
+                current.Value.Location = new int[] { location[0], location[1] };
                 switch (current.Value.SectionType)
                 {
                     case SectionTypes.RightCorner:
@@ -47,7 +58,6 @@ namespace SpaceRace
                 location = ChangeLocation(location, rotation);
                 current = current.Next;
             }
-            FixPosition(track);
         }
 
         /// <summary>
@@ -121,17 +131,6 @@ namespace SpaceRace
             }
             location[0] -= 1;
             return location;
-        }
-        
-        public static void FixPosition(Track track)
-        {
-            foreach(Section section in track.Sections)
-            {
-                Console.WriteLine("Direction: " + section.direction);
-                Console.WriteLine("X: " + section.Location[0]);
-                Console.WriteLine("Y: " + section.Location[1]);
-                Console.WriteLine(" ");
-            }
         }
     }
 }

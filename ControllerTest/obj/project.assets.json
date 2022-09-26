@@ -4002,19 +4002,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jensh\\.nuget\\packages\\": {}
+    "C:\\Users\\migl3\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jensh\\OneDrive\\Bureaublad\\SpaceRace\\ControllerTest\\ControllerTest.csproj",
+      "projectUniqueName": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\ControllerTest\\ControllerTest.csproj",
       "projectName": "ControllerTest",
-      "projectPath": "C:\\Users\\jensh\\OneDrive\\Bureaublad\\SpaceRace\\ControllerTest\\ControllerTest.csproj",
-      "packagesPath": "C:\\Users\\jensh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jensh\\OneDrive\\Bureaublad\\SpaceRace\\ControllerTest\\obj\\",
+      "projectPath": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\ControllerTest\\ControllerTest.csproj",
+      "packagesPath": "C:\\Users\\migl3\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\ControllerTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jensh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\migl3\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4028,8 +4028,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\jensh\\OneDrive\\Bureaublad\\SpaceRace\\Controller\\Controller.csproj": {
-              "projectPath": "C:\\Users\\jensh\\OneDrive\\Bureaublad\\SpaceRace\\Controller\\Controller.csproj"
+            "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Controller\\Controller.csproj": {
+              "projectPath": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Controller\\Controller.csproj"
             }
           }
         }
