@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Reflection.PortableExecutable;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,8 +14,10 @@ namespace SpaceRace
     public static class Visualize
     {
         #region graphics
-        private static string[] _starthorizontal = { "-------", ".      ", ". | |  ", ".      ", ". | |  ", ".      ", "-------" };
-        private static string[] _straight = { "-------", "       ", " #   # ", "       ", " #   # ", "       ", "-------" };
+        private static string[] _empty = { "       ", "       ", "       ", "       ", "       ", "       ", "       " };
+        private static string[] _starthorizontal = { "-------", "       ", "       ", "       ", "       ", "       ", "-------" };
+        private static string[] _straighthorizontal = { "-------", "       ", "       ", " -- -- ", "       ", "       ", "-------" };
+        private static string[] _straightvertical = { "-     -", "-  -  -", "-  -  -", "-     -", "-  -  -", "-  -  -", "-------" };
         private static string[] _finishHorizontal = { "-------", "      *", "      *", "      *", "      *", "      *", "-------" };
         private static string[] _leftCorner = { "/------", "-      ", "-      ", "-      ", "-      ", "-      ", "-     -" };
         private static string[] _rightCorner = { "-------", "      -", "      -", "      -", "      -", "      -", "-     -" };
@@ -26,25 +30,31 @@ namespace SpaceRace
 
         public static void DrawTrack(Track track)
         {
-            foreach(var section in track.Sections)
+            int[] highestValue = new int[2] {0, 0};
+            foreach (Section section in track.Sections)
             {
-                Console.WriteLine("Direction: " + section.direction);
-                Console.WriteLine("X: " + section.Location[0]);
-                Console.WriteLine("Y: " + section.Location[1]);
-                Console.WriteLine(" ");
+                if (section.Location[0] > highestValue[0]) highestValue[0] = section.Location[0];
+                if (section.Location[1] > highestValue[1]) highestValue[1] = section.Location[1];
+            }
+            for(int i = 0; i < highestValue[0]; i++)
+            {
+                for(int u = 0; u < highestValue[1]; u++)
+                {
+
+                }
             }
         }
 
         public static void SetLocation(Track track)
         {
             int[] location = new int[2] { 0, 0 };
+            int[] lowestValue = new int[2] { 0, 0 };
             Rotation rotation = Rotation.East;
-            var current = track.Sections.First;
-            while (current != null)
+            foreach (Section section in track.Sections)
             {
-                current.Value.direction = rotation;
-                current.Value.Location = new int[] { location[0], location[1] };
-                switch (current.Value.SectionType)
+                section.direction = rotation;
+                section.Location = new int[] { location[0], location[1] };
+                switch (section.SectionType)
                 {
                     case SectionTypes.RightCorner:
                         rotation = Rotate(rotation, true);
@@ -53,40 +63,24 @@ namespace SpaceRace
                         rotation = Rotate(rotation, false);
                         break;
                 }
-                if (location[0] < 0 || location[1] < 0)
-                    location = ShiftSections(current, track.Sections);
+                if (location[0] < lowestValue[0]) lowestValue[0] = location[0];
+                if(location[1] < lowestValue[1]) lowestValue[1] = location[1];
                 location = ChangeLocation(location, rotation);
-                current = current.Next;
             }
+            Console.WriteLine("X: " + lowestValue[0]);
+            Console.WriteLine("Y: " + lowestValue[1]);
+            ShiftSections(lowestValue, track);
         }
 
-        /// <summary>
-        /// function added by Jens.
-        /// the goal of this function is to shift all previous sections by 1 in either the X or Y axes
-        /// </summary>
-        /// <param name="current">
-        /// the last section you wish to change its position of
-        /// all sections bevore and this one will be updated
-        /// </param>
-        /// <param name="list">
-        /// the full list of section you wish to edit
-        /// </param>
-        /// <returns>
-        /// returns an updated position to continue off
-        /// </returns>
-        private static int[] ShiftSections(LinkedListNode<Section> current, LinkedList<Section> list)
+        private static void ShiftSections(int[] lowestValue, Track track)
         {
-            var currentSection = list.First;
-            while (currentSection != null && currentSection.Value != current.Next.Value)
+            foreach (Section section in track.Sections)
             {
-                for (int i = 0; i <= 1; i++)
-                    currentSection.Value.Location[i] = current.Value.Location[i] < 0 ? currentSection.Value.Location[i] + 1 : currentSection.Value.Location[i];
-
-                currentSection = currentSection.Next;
+                section.Location[0] = section.Location[0] + Math.Abs(lowestValue[0]);
+                section.Location[1] = section.Location[1] + Math.Abs(lowestValue[1]);
             }
-            return current.Value.Location;
         }
-        
+
         public static Rotation Rotate(Rotation rotation, Boolean RightCorner)
         {
             if(RightCorner)

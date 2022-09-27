@@ -26,7 +26,6 @@ namespace Model
         public Section(SectionTypes sectionTypes)
         {
             SectionType = sectionTypes;
-
         }
 
         public SectionTypes SectionType { get; set; }
