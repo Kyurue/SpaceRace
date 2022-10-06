@@ -12,12 +12,12 @@
         }
         public Track NextTrack()
         {
-            if(Tracks.Count > 0)
+            if (Tracks.Count > 0)
             {
                 Track currenttrack = Tracks.Dequeue();
                 return currenttrack;
             }
-            return null;   
+            return null;
         }
     }
 }

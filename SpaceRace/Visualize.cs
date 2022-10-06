@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Reflection.PortableExecutable;
+using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,33 +16,102 @@ namespace SpaceRace
     public static class Visualize
     {
         #region graphics
-        private static string[] _empty = { "       ", "       ", "       ", "       ", "       ", "       ", "       " };
-        private static string[] _starthorizontal = { "-------", "       ", "       ", "       ", "       ", "       ", "-------" };
-        private static string[] _straighthorizontal = { "-------", "       ", "       ", " -- -- ", "       ", "       ", "-------" };
-        private static string[] _straightvertical = { "-     -", "-  -  -", "-  -  -", "-     -", "-  -  -", "-  -  -", "-------" };
-        private static string[] _finishHorizontal = { "-------", "      *", "      *", "      *", "      *", "      *", "-------" };
-        private static string[] _leftCorner = { "/------", "-      ", "-      ", "-      ", "-      ", "-      ", "-     -" };
-        private static string[] _rightCorner = { "-------", "      -", "      -", "      -", "      -", "      -", "-     -" };
+        private static string[] _startHorizontal = {    "--------------", "             |", "          |   ", "       |      ", "    |         ", " |            ", "--------------" };
+        private static string[] _straightHorizontal = { "--------------", "              ", "              ", "              ", "              ", "              ", "--------------" };
+        private static string[] _straightVertical = {   "-            -", "-            -", "-            -", "-            -", "-            -", "-            -", "-            -" };
+        private static string[] _finishHorizontal = {   "--------------", " *            ", " *            ", " *            ", " *            ", " *            ", "--------------" };
+        private static string[] _Corner1 = {            "/-------------", "-             ", "-             ", "-             ", "-             ", "-             ", "-            /" };
+        private static string[] _Corner2 = {           @"-------------\", "             -", "             -", "             -", "             -", "             -",@"\            -" };
+        private static string[] _Corner3 = {           @"-            \", "-             ", "-             ", "-             ", "-             ", "-             ",@"\-------------" };
+        private static string[] _Corner4 = {            "/            -", "             -", "             -", "             -", "             -", "             -", "-------------/" };
         #endregion
 
-        internal static void Initialize()
+        internal static void Initialize(Track track)
         {
+            SetLocation(track);
+            DrawTrack(track);
+        }
 
+        internal static string[] getTrack(SectionTypes section, Rotation direction)
+        {
+            switch(section)
+            {
+                case SectionTypes.StartGrid:
+                    return _startHorizontal;
+                case SectionTypes.Straight:
+                    if (direction == Rotation.West || direction == Rotation.East)
+                    {
+                        return _straightHorizontal;
+                    } 
+                    return _straightVertical;
+                case SectionTypes.LeftCorner:
+                    switch(direction)
+                    {
+                        case Rotation.North:
+                            return _Corner2;
+                        case Rotation.East:
+                            return _Corner4;
+                        case Rotation.South:
+                            return _Corner3;
+                        case Rotation.West:
+                            return _Corner1;
+                    }
+                    break;
+                case SectionTypes.RightCorner:
+                    switch (direction)
+                    {
+                        case Rotation.North:
+                            return _Corner1;
+                        case Rotation.East:
+                            return _Corner2;
+                        case Rotation.South:
+                            return _Corner4;
+                        case Rotation.West:
+                            return _Corner3;
+                    }
+                    break;
+            }
+            return _finishHorizontal;
+        }
+        
+        internal static void PrintTrack(string[]? section, int x, int y)
+        {
+            if(section != null)
+            {
+                for (int i = 0; i < section.Length; i++)
+                {
+                    Console.SetCursorPosition(x * 14, (y * 7) + i);
+                    Console.WriteLine(section[i]);
+                }
+            }
         }
 
         public static void DrawTrack(Track track)
         {
+            Console.BackgroundColor = ConsoleColor.DarkGray;
             int[] highestValue = new int[2] {0, 0};
             foreach (Section section in track.Sections)
             {
                 if (section.Location[0] > highestValue[0]) highestValue[0] = section.Location[0];
                 if (section.Location[1] > highestValue[1]) highestValue[1] = section.Location[1];
             }
-            for(int i = 0; i < highestValue[0]; i++)
+            Console.SetWindowSize(highestValue[0] * 18, highestValue[1] * 15);
+            for (int y = 0; y <= highestValue[1]; y++)
             {
-                for(int u = 0; u < highestValue[1]; u++)
+                for (int x = 0; x <= highestValue[0]; x++)
                 {
-
+                    var currentSection = track.Sections.First;
+                    bool foundSection = false;
+                    while (currentSection != null && foundSection == false)
+                    {
+                        if (currentSection.Value.Location[0] == x && currentSection.Value.Location[1] == y)
+                        {
+                            PrintTrack(getTrack(currentSection.Value.SectionType, currentSection.Value.direction), x, y);
+                            foundSection = true;
+                        }
+                        currentSection = currentSection.Next;
+                        if (foundSection == false) PrintTrack(null, x, y);
+                    }
                 }
             }
         }
@@ -64,11 +135,9 @@ namespace SpaceRace
                         break;
                 }
                 if (location[0] < lowestValue[0]) lowestValue[0] = location[0];
-                if(location[1] < lowestValue[1]) lowestValue[1] = location[1];
+                if (location[1] < lowestValue[1]) lowestValue[1] = location[1];
                 location = ChangeLocation(location, rotation);
             }
-            Console.WriteLine("X: " + lowestValue[0]);
-            Console.WriteLine("Y: " + lowestValue[1]);
             ShiftSections(lowestValue, track);
         }
 
@@ -81,7 +150,7 @@ namespace SpaceRace
             }
         }
 
-        public static Rotation Rotate(Rotation rotation, Boolean RightCorner)
+        public static Rotation Rotate(Rotation rotation, bool RightCorner)
         {
             if(RightCorner)
             {

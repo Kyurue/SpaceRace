@@ -37,6 +37,7 @@ namespace Controller
                                     {
                                         SectionTypes.StartGrid,
                                         SectionTypes.StartGrid,
+                                        SectionTypes.Finish,
                                         SectionTypes.RightCorner,
                                         SectionTypes.LeftCorner,
                                         SectionTypes.RightCorner,
@@ -48,13 +49,13 @@ namespace Controller
                                         SectionTypes.RightCorner,
                                         SectionTypes.Straight,
                                         SectionTypes.RightCorner,
-                                        SectionTypes.Finish
                                     }));
 
             Competition.Tracks.Enqueue(new Track("Track2", new SectionTypes[]
                                    {
                                         SectionTypes.StartGrid,
                                         SectionTypes.StartGrid,
+                                        SectionTypes.Finish,
                                         SectionTypes.RightCorner,
                                         SectionTypes.RightCorner,
                                         SectionTypes.Straight,
@@ -62,7 +63,6 @@ namespace Controller
                                         SectionTypes.Straight,
                                         SectionTypes.RightCorner,
                                         SectionTypes.RightCorner,
-                                        SectionTypes.Finish
                                    }));
         }
     }

@@ -7,8 +7,7 @@ class Program
     {
         Data.Initialize();
         Data.NextRace();
-        Visualize.SetLocation(Data.CurrentRace.Track);
-        Visualize.DrawTrack(Data.CurrentRace.Track);
+        Visualize.Initialize(Data.CurrentRace.Track);
         for (; ; )
         {
             Thread.Sleep(100);
