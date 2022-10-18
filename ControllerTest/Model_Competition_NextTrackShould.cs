@@ -31,7 +31,8 @@ namespace ControllerTest
             Track track = new Track("Track1", new SectionTypes[]
                                    {
                                         SectionTypes.StartGrid,
-                                        SectionTypes.Straight,
+                                        SectionTypes.StartGrid,
+                                        SectionTypes.Finish,
                                         SectionTypes.RightCorner,
                                         SectionTypes.LeftCorner,
                                         SectionTypes.RightCorner,
@@ -40,11 +41,9 @@ namespace ControllerTest
                                         SectionTypes.Straight,
                                         SectionTypes.Straight,
                                         SectionTypes.Straight,
-                                        SectionTypes.Straight,
                                         SectionTypes.RightCorner,
                                         SectionTypes.Straight,
                                         SectionTypes.RightCorner,
-                                        SectionTypes.Finish,
                                    });
             _competition.Tracks.Enqueue(track);
             Track result = _competition.NextTrack();

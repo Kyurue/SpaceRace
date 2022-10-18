@@ -29,6 +29,7 @@ namespace Controller
             Competition.Participants.Add(new Driver("Rick", 0, new Ship(1, 2, 3, false), TeamColours.Blue));
             Competition.Participants.Add(new Driver("Morty", 0, new Ship(2, 2, 2, false), TeamColours.Yellow));
             Competition.Participants.Add(new Driver("Alien", 0, new Ship(2, 3, 1, false), TeamColours.Green));
+            Competition.Participants.Add(new Driver("Alien2", 0, new Ship(2, 3, 1, false), TeamColours.Green));
         }
 
         private static void AddTracks()
@@ -36,7 +37,7 @@ namespace Controller
             Competition.Tracks.Enqueue(new Track("Track1", new SectionTypes[]
                                     {
                                         SectionTypes.StartGrid,
-                                        SectionTypes.StartGrid,
+                                        SectionTypes.StartGrid, 
                                         SectionTypes.Finish,
                                         SectionTypes.RightCorner,
                                         SectionTypes.LeftCorner,

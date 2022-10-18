@@ -16,22 +16,99 @@ namespace SpaceRace
     public static class Visualize
     {
         #region graphics
-        private static string[] _startHorizontal = {    "--------------", "             |", "          |   ", "       |      ", "    |         ", " |            ", "--------------" };
-        private static string[] _straightHorizontal = { "--------------", "              ", "              ", "              ", "              ", "              ", "--------------" };
-        private static string[] _straightVertical = {   "-            -", "-            -", "-            -", "-            -", "-            -", "-            -", "-            -" };
-        private static string[] _finishHorizontal = {   "--------------", " *            ", " *            ", " *            ", " *            ", " *            ", "--------------" };
-        private static string[] _Corner1 = {            "/-------------", "-             ", "-             ", "-             ", "-             ", "-             ", "-            /" };
-        private static string[] _Corner2 = {           @"-------------\", "             -", "             -", "             -", "             -", "             -",@"\            -" };
-        private static string[] _Corner3 = {           @"-            \", "-             ", "-             ", "-             ", "-             ", "-             ",@"\-------------" };
-        private static string[] _Corner4 = {            "/            -", "             -", "             -", "             -", "             -", "             -", "-------------/" };
+        private static string[] _startHorizontal = {   
+            "--------------", 
+            "              ", 
+            "         1|   ", 
+            "              ", 
+            "   2|         ", 
+            "              ", 
+            "--------------" };
+        private static string[] _straightHorizontal = { 
+            "--------------", 
+            "              ", 
+            "         1    ", 
+            "              ", 
+            "    2         ", 
+            "              ", 
+            "--------------" };
+        private static string[] _straightVertical = {   
+            "|            |", 
+            "|   2        |", 
+            "|            |", 
+            "|            |", 
+            "|        1   |", 
+            "|            |", 
+            "|            |" };
+        private static string[] _finishHorizontal = {   
+            "--------------", 
+            " *       1    ", 
+            " *            ", 
+            " *            ", 
+            " *     2      ", 
+            " *            ", 
+            "--------------" };
+        //private static string[] _finishVertical = {
+        //    "-* * * * * * -",
+        //    "-            -",
+        //    "-            -",
+        //    "-            -",
+        //    "-            -",
+        //    "-            -",
+        //    "-            -" };
+        private static string[] _Corner1 = {            
+            "/-------------", 
+            "|             ", 
+            "|   1         ", 
+            "|             ", 
+            "|             ", 
+            "|        2    ", 
+            "|            /" };
+        private static string[] _Corner2 = {           
+           @"-------------\", 
+            "             |", 
+            "         1   |", 
+            "             |", 
+            "   2         |", 
+            "             |",
+           @"\            |" };
+        private static string[] _Corner3 = {           
+           @"|            \", 
+            "|             ", 
+            "|         2   ", 
+            "|             ", 
+            "|  1          ", 
+            "|             ",
+           @"\-------------" };
+        private static string[] _Corner4 = {            
+            "/            |", 
+            "   2         |", 
+            "             |", 
+            "             |", 
+            "        1    |", 
+            "             |", 
+            "-------------/" };
         #endregion
 
-        internal static void Initialize(Track track)
+        private static Race _race;
+
+        /// <summary>
+        /// Initialize track
+        /// </summary>
+        /// <param name="track"></param>
+        internal static void Initialize(Race race)
         {
-            SetLocation(track);
-            DrawTrack(track);
+            _race = race;
+            SetLocation(_race.Track);
+            DrawTrack(_race.Track);
         }
 
+        /// <summary>
+        /// Get track based on sectiontype and rotation. 
+        /// </summary>
+        /// <param name="section"></param>
+        /// <param name="direction"></param>
+        /// <returns>string array</returns>
         internal static string[] getTrack(SectionTypes section, Rotation direction)
         {
             switch(section)
@@ -73,22 +150,40 @@ namespace SpaceRace
             }
             return _finishHorizontal;
         }
-        
-        internal static void PrintTrack(string[]? section, int x, int y)
+
+        /// <summary>
+        /// print the section in the console
+        /// </summary>
+        /// <param name="section"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        internal static void PrintSection(Section? section, int x, int y)
         {
             if(section != null)
             {
-                for (int i = 0; i < section.Length; i++)
+                string[] sectionTile = getTrack(section.SectionType, section.direction);
+                IParticipant leftParticipant = _race.GetSectionData(section).Left;
+                IParticipant rightParticipant = _race.GetSectionData(section).Right;
+                for (int i = 0; i < sectionTile.Length; i++)
                 {
                     Console.SetCursorPosition(x * 14, (y * 7) + i);
-                    Console.WriteLine(section[i]);
+                    if (sectionTile[i].Contains("1")) {
+                        Console.WriteLine(DrawParticipant(sectionTile[i], "1", leftParticipant != null ? leftParticipant : null));
+                    } else if(sectionTile[i].Contains("2")) {
+                        Console.WriteLine(DrawParticipant(sectionTile[i], "2", rightParticipant != null ? rightParticipant : null));
+                    } else {
+                        Console.WriteLine(sectionTile[i]);
+                    }
                 }
             }
         }
 
+        /// <summary>
+        /// Draw the entire track 
+        /// </summary>
+        /// <param name="track"></param>
         public static void DrawTrack(Track track)
         {
-            Console.BackgroundColor = ConsoleColor.DarkGray;
             int[] highestValue = new int[2] {0, 0};
             foreach (Section section in track.Sections)
             {
@@ -106,16 +201,27 @@ namespace SpaceRace
                     {
                         if (currentSection.Value.Location[0] == x && currentSection.Value.Location[1] == y)
                         {
-                            PrintTrack(getTrack(currentSection.Value.SectionType, currentSection.Value.direction), x, y);
+                            PrintSection(currentSection.Value, x, y);
                             foundSection = true;
                         }
                         currentSection = currentSection.Next;
-                        if (foundSection == false) PrintTrack(null, x, y);
                     }
                 }
             }
         }
 
+        public static string DrawParticipant(string str, string replaceValue, IParticipant? participant)
+        {
+            if (participant != null)
+                return str.Replace(replaceValue, "f");
+            else
+                return str.Replace(replaceValue, " ");
+        }
+
+        /// <summary>
+        /// set the sections location parameter to the corrrect position. 
+        /// </summary>
+        /// <param name="track"></param>
         public static void SetLocation(Track track)
         {
             int[] location = new int[2] { 0, 0 };
@@ -141,6 +247,11 @@ namespace SpaceRace
             ShiftSections(lowestValue, track);
         }
 
+        /// <summary>
+        /// shift sections to the correct positions if location is below 0. 
+        /// </summary>
+        /// <param name="lowestValue"></param>
+        /// <param name="track"></param>
         private static void ShiftSections(int[] lowestValue, Track track)
         {
             foreach (Section section in track.Sections)
@@ -150,6 +261,12 @@ namespace SpaceRace
             }
         }
 
+        /// <summary>
+        /// change rotation after corner.
+        /// </summary>
+        /// <param name="rotation"></param>
+        /// <param name="RightCorner"></param>
+        /// <returns></returns>
         public static Rotation Rotate(Rotation rotation, bool RightCorner)
         {
             if(RightCorner)
@@ -178,6 +295,12 @@ namespace SpaceRace
             return Rotation.South;
         }
 
+        /// <summary>
+        /// Set the next location based on the direction the section is facing in.  
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="rotation"></param>
+        /// <returns></returns>
         public static int[] ChangeLocation(int[] location, Rotation rotation)
         {
             switch(rotation)
