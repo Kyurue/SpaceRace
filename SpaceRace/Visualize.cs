@@ -213,7 +213,7 @@ namespace SpaceRace
         public static string DrawParticipant(string str, string replaceValue, IParticipant? participant)
         {
             if (participant != null)
-                return str.Replace(replaceValue, "f");
+                return str.Replace(replaceValue, participant.Name.Substring(0, 1));
             else
                 return str.Replace(replaceValue, " ");
         }

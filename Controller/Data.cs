@@ -29,7 +29,7 @@ namespace Controller
             Competition.Participants.Add(new Driver("Rick", 0, new Ship(1, 2, 3, false), TeamColours.Blue));
             Competition.Participants.Add(new Driver("Morty", 0, new Ship(2, 2, 2, false), TeamColours.Yellow));
             Competition.Participants.Add(new Driver("Alien", 0, new Ship(2, 3, 1, false), TeamColours.Green));
-            Competition.Participants.Add(new Driver("Alien2", 0, new Ship(2, 3, 1, false), TeamColours.Green));
+            Competition.Participants.Add(new Driver("test", 0, new Ship(2, 3, 1, false), TeamColours.Green));
         }
 
         private static void AddTracks()

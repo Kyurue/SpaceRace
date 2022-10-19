@@ -1,24 +1,34 @@
 ﻿using Model;
 using System.Drawing;
+using System.Timers;
+using Timer = System.Timers.Timer;
 
 namespace Controller
 {
     public class Race
     {
+        public Track Track { get; set; }
+        public List<IParticipant> Participants { get; set; }
+        public DateTime StartTime { get; set; }
+        private Random _random;
+        private Dictionary<Section, SectionData> Positions;
+        private Timer _timer;
+
         public Race(Track track, List<IParticipant> participants)
         {
             this.Track = track;
             this.Participants = participants;
             this._random = new Random(DateTime.Now.Millisecond);
             this.Positions = new Dictionary<Section, SectionData>();
+            _timer = new Timer();
+            _timer.Interval = 500;
             PlaceParticipantsOnStartgrid();
         }
-        public Track Track { get; set; }
-        public List<IParticipant> Participants { get; set; }
-        public DateTime StartTime { get; set; }
-        private Random _random;
-        private Dictionary<Section, SectionData> Positions;
 
+        private TimerCallback OnTimedEvent()
+        {
+            throw new NotImplementedException();
+        }
 
         public SectionData GetSectionData(Section section)
         {
