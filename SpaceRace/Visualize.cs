@@ -10,6 +10,7 @@ using System.Runtime.ExceptionServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace SpaceRace
 {
@@ -48,14 +49,14 @@ namespace SpaceRace
             " *     2      ", 
             " *            ", 
             "--------------" };
-        //private static string[] _finishVertical = {
-        //    "-* * * * * * -",
-        //    "-            -",
-        //    "-            -",
-        //    "-            -",
-        //    "-            -",
-        //    "-            -",
-        //    "-            -" };
+        private static string[] _finishVertical = {
+            "-* * * * * * -",
+            "-            -",
+            "-            -",
+            "-            -",
+            "-            -",
+            "-            -",
+            "-            -" };
         private static string[] _Corner1 = {            
             "/-------------", 
             "|             ", 
@@ -100,7 +101,6 @@ namespace SpaceRace
         {
             _race = race;
             SetLocation(_race.Track);
-            DrawTrack(_race.Track);
         }
 
         /// <summary>
@@ -317,6 +317,11 @@ namespace SpaceRace
             }
             location[0] -= 1;
             return location;
+        }
+
+        public static void OnDriversChanged(object sender, DriversChangedEventArgs e)
+        {
+            DrawTrack(e._track);
         }
     }
 }

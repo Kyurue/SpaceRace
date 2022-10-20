@@ -13,6 +13,8 @@ namespace Controller
         private Random _random;
         private Dictionary<Section, SectionData> Positions;
         private Timer _timer;
+        public event EventHandler<DriversChangedEventArgs> DriversChanged;
+
 
         public Race(Track track, List<IParticipant> participants)
         {
@@ -22,12 +24,19 @@ namespace Controller
             this.Positions = new Dictionary<Section, SectionData>();
             _timer = new Timer();
             _timer.Interval = 500;
+            _timer.Elapsed += OnTimedEvent;
             PlaceParticipantsOnStartgrid();
         }
 
-        private TimerCallback OnTimedEvent()
+        protected void OnTimedEvent(object? source, ElapsedEventArgs e)
         {
-            throw new NotImplementedException();
+
+        }
+
+        public void Start()
+        {
+            DriversChanged?.Invoke(this, new DriversChangedEventArgs() { _track = this.Track });
+            //_timer.Start();
         }
 
         public SectionData GetSectionData(Section section)

@@ -8,6 +8,8 @@ class Program
         Data.Initialize();
         Data.NextRace();
         Visualize.Initialize(Data.CurrentRace);
+        Data.CurrentRace.DriversChanged += Visualize.OnDriversChanged;
+        Data.CurrentRace.Start();
         for (; ; )
         {
             Thread.Sleep(100);
