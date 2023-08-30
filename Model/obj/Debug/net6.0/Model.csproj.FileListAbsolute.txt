@@ -22,3 +22,15 @@ C:\Users\jensh\OneDrive\Bureaublad\SpaceRace\Model\obj\Debug\net6.0\Model.dll
 C:\Users\jensh\OneDrive\Bureaublad\SpaceRace\Model\obj\Debug\net6.0\refint\Model.dll
 C:\Users\jensh\OneDrive\Bureaublad\SpaceRace\Model\obj\Debug\net6.0\Model.pdb
 C:\Users\jensh\OneDrive\Bureaublad\SpaceRace\Model\obj\Debug\net6.0\ref\Model.dll
+C:\Users\micha.glas\Documents\Repositories\spacerace\SpaceRace\Model\bin\Debug\net6.0\Model.deps.json
+C:\Users\micha.glas\Documents\Repositories\spacerace\SpaceRace\Model\bin\Debug\net6.0\Model.dll
+C:\Users\micha.glas\Documents\Repositories\spacerace\SpaceRace\Model\bin\Debug\net6.0\Model.pdb
+C:\Users\micha.glas\Documents\Repositories\spacerace\SpaceRace\Model\obj\Debug\net6.0\Model.csproj.AssemblyReference.cache
+C:\Users\micha.glas\Documents\Repositories\spacerace\SpaceRace\Model\obj\Debug\net6.0\Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\micha.glas\Documents\Repositories\spacerace\SpaceRace\Model\obj\Debug\net6.0\Model.AssemblyInfoInputs.cache
+C:\Users\micha.glas\Documents\Repositories\spacerace\SpaceRace\Model\obj\Debug\net6.0\Model.AssemblyInfo.cs
+C:\Users\micha.glas\Documents\Repositories\spacerace\SpaceRace\Model\obj\Debug\net6.0\Model.csproj.CoreCompileInputs.cache
+C:\Users\micha.glas\Documents\Repositories\spacerace\SpaceRace\Model\obj\Debug\net6.0\Model.dll
+C:\Users\micha.glas\Documents\Repositories\spacerace\SpaceRace\Model\obj\Debug\net6.0\refint\Model.dll
+C:\Users\micha.glas\Documents\Repositories\spacerace\SpaceRace\Model\obj\Debug\net6.0\Model.pdb
+C:\Users\micha.glas\Documents\Repositories\spacerace\SpaceRace\Model\obj\Debug\net6.0\ref\Model.dll

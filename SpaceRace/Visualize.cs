@@ -10,6 +10,7 @@ using System.Runtime.ExceptionServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace SpaceRace
 {
@@ -101,6 +102,7 @@ namespace SpaceRace
             _race = race;
             SetLocation(_race.Track);
             DrawTrack(_race.Track);
+            _race.DriversChanged += DriversChangedHandler;
         }
 
         /// <summary>
@@ -317,6 +319,11 @@ namespace SpaceRace
             }
             location[0] -= 1;
             return location;
+        }
+
+        public static void DriversChangedHandler(Object sender, DriversChangedEventArgs e)
+        {
+            DrawTrack(e.track);
         }
     }
 }

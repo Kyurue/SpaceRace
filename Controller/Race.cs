@@ -1,4 +1,5 @@
 ﻿using Model;
+using System.Diagnostics;
 using System.Drawing;
 using System.Timers;
 using Timer = System.Timers.Timer;
@@ -13,6 +14,7 @@ namespace Controller
         private Random _random;
         private Dictionary<Section, SectionData> Positions;
         private Timer _timer;
+        public event EventHandler<DriversChangedEventArgs> DriversChanged;
 
         public Race(Track track, List<IParticipant> participants)
         {
@@ -22,12 +24,45 @@ namespace Controller
             this.Positions = new Dictionary<Section, SectionData>();
             _timer = new Timer();
             _timer.Interval = 500;
+            _timer.Elapsed += OnTimedEvent;
             PlaceParticipantsOnStartgrid();
         }
 
-        private TimerCallback OnTimedEvent()
+        private void OnTimedEvent(Object sender, ElapsedEventArgs e)
         {
-            throw new NotImplementedException();
+            //loop through sections
+            //get sectiondata
+            //check if sectiondata has participants
+            //has participants? 
+            //retract participant performance * speed
+            //distanceleft <= 0? 
+            //move to next section
+            MoveAllParticipants();
+            DriversChanged?.Invoke(this, new DriversChangedEventArgs(Data.CurrentRace.Track));
+        }
+
+        private void MoveAllParticipants()
+        {
+            LinkedListNode<Section> currentSectionNode = Track.Sections.Last;
+
+            while (currentSectionNode != null)
+            {
+                MoveParticipantsSectionData(currentSectionNode.Value, (currentSectionNode.Next != null) ? currentSectionNode.Next.Value : Track.Sections.First?.Value);
+                currentSectionNode = currentSectionNode.Previous;
+            }
+        }
+
+        //private void MoveParticipantsSectionData(Section currentSection, Section nextSection)
+        //{
+        //    throw NotImplementedException("oof");
+        //}
+
+        /// <summary>
+        /// start the timer
+        /// </summary>
+        public void StartTimer()
+        {
+            _timer.Start();
         }
 
         public SectionData GetSectionData(Section section)
@@ -79,11 +114,11 @@ namespace Controller
         /// </summary>
         public void PlaceParticipants(Section section, IParticipant participant, bool right)
         {
-            if (right)
+            if (right) { 
                 GetSectionData(section).Right = participant;
-            else
+            } else { 
                 GetSectionData(section).Left = participant;
-                
+            }
         }
 
         /// <summary>

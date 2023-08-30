@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\migl3\\source\\repos\\SpaceRace\\SpaceRace\\SpaceRace.csproj": {}
+    "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\SpaceRace\\SpaceRace.csproj": {}
   },
   "projects": {
-    "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Controller\\Controller.csproj": {
+    "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\Controller\\Controller.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Controller\\Controller.csproj",
+        "projectUniqueName": "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\Controller\\Controller.csproj",
         "projectName": "Controller",
-        "projectPath": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Controller\\Controller.csproj",
-        "packagesPath": "C:\\Users\\migl3\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Controller\\obj\\",
+        "projectPath": "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\Controller\\Controller.csproj",
+        "packagesPath": "C:\\Users\\micha.glas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\Controller\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\migl3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\micha.glas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/denieuwezaak/auth/bdcf2369-7687-4b35-a310-fe0008a40178/api/v2": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Model\\Model.csproj": {
-                "projectPath": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Model\\Model.csproj"
+              "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\Model\\Model.csproj": {
+                "projectPath": "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\Model\\Model.csproj"
               }
             }
           }
@@ -59,21 +64,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Model\\Model.csproj": {
+    "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\Model\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Model\\Model.csproj",
+        "projectUniqueName": "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\Model\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Model\\Model.csproj",
-        "packagesPath": "C:\\Users\\migl3\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Model\\obj\\",
+        "projectPath": "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\Model\\Model.csproj",
+        "packagesPath": "C:\\Users\\micha.glas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\Model\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\migl3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\micha.glas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -81,7 +90,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/denieuwezaak/auth/bdcf2369-7687-4b35-a310-fe0008a40178/api/v2": {}
         },
         "frameworks": {
           "net6.0": {
@@ -114,21 +124,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\migl3\\source\\repos\\SpaceRace\\SpaceRace\\SpaceRace.csproj": {
+    "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\SpaceRace\\SpaceRace.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\SpaceRace\\SpaceRace.csproj",
+        "projectUniqueName": "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\SpaceRace\\SpaceRace.csproj",
         "projectName": "SpaceRace",
-        "projectPath": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\SpaceRace\\SpaceRace.csproj",
-        "packagesPath": "C:\\Users\\migl3\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\SpaceRace\\obj\\",
+        "projectPath": "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\SpaceRace\\SpaceRace.csproj",
+        "packagesPath": "C:\\Users\\micha.glas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\SpaceRace\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\migl3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\micha.glas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -136,17 +150,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/denieuwezaak/auth/bdcf2369-7687-4b35-a310-fe0008a40178/api/v2": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Controller\\Controller.csproj": {
-                "projectPath": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Controller\\Controller.csproj"
+              "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\Controller\\Controller.csproj": {
+                "projectPath": "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\Controller\\Controller.csproj"
               },
-              "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Model\\Model.csproj": {
-                "projectPath": "C:\\Users\\migl3\\source\\repos\\SpaceRace\\Model\\Model.csproj"
+              "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\Model\\Model.csproj": {
+                "projectPath": "C:\\Users\\micha.glas\\Documents\\Repositories\\spacerace\\SpaceRace\\Model\\Model.csproj"
               }
             }
           }
@@ -176,7 +191,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
