@@ -323,7 +323,7 @@ namespace SpaceRace
 
         public static void DriversChangedHandler(Object sender, DriversChangedEventArgs e)
         {
-            DrawTrack(e.track);
+            DrawTrack(e.Track);
         }
     }
 }
