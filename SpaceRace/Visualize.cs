@@ -35,10 +35,10 @@ namespace SpaceRace
             "--------------" };
         private static string[] _straightVertical = {   
             "|            |", 
-            "|   2        |", 
+            "|   1        |", 
             "|            |", 
             "|            |", 
-            "|        1   |", 
+            "|        2   |", 
             "|            |", 
             "|            |" };
         private static string[] _finishHorizontal = {   

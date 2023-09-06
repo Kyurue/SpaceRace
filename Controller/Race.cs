@@ -30,13 +30,6 @@ namespace Controller
 
         private void OnTimedEvent(Object sender, ElapsedEventArgs e)
         {
-            //loop through sections
-            //get sectiondata
-            //check if sectiondata has participants
-            //has participants? 
-            //retract participant performance * speed
-            //distanceleft <= 0? 
-            //move to next section
             MoveAllParticipants();
             DriversChanged?.Invoke(this, new DriversChangedEventArgs(Data.CurrentRace.Track));
         }
@@ -52,10 +45,77 @@ namespace Controller
             }
         }
 
-        //private void MoveParticipantsSectionData(Section currentSection, Section nextSection)
-        //{
-        //    throw NotImplementedException("oof");
-        //}
+        private void MoveParticipantsSectionData(Section currentSection, Section nextSection)
+        {
+            SectionData currentSectionData = GetSectionData(currentSection);
+            SectionData nextSectionData = GetSectionData(nextSection);
+
+            if(currentSectionData.Left != null && !currentSectionData.Left.Equipment.IsBroken)
+            {
+                currentSectionData.DistanceLeft += GetParticipantDistance(currentSectionData.Left);
+            }
+            if(currentSectionData.Right != null && !currentSectionData.Right.Equipment.IsBroken)
+            {
+                currentSectionData.DistanceRight += GetParticipantDistance(currentSectionData.Right);
+            }
+
+            if(currentSectionData.DistanceLeft >= 100)
+            {
+                if(nextSectionData.Left == null)
+                {
+                    MoveParticipant(currentSectionData, nextSectionData, true, true);
+                } else if (nextSectionData.Right == null)
+                {
+                    MoveParticipant(currentSectionData, nextSectionData, true, false);
+                } 
+            } else if(currentSectionData.DistanceRight >= 100)
+            {
+                if (nextSectionData.Right == null)
+                {
+                    MoveParticipant(currentSectionData, nextSectionData, false, false);
+                }
+                else if (nextSectionData.Left == null)
+                {
+                    MoveParticipant(currentSectionData, nextSectionData, false, true);
+                }
+            }
+        }
+
+        private void MoveParticipant(SectionData currentSectionData, SectionData nextSectionData, bool startsLeft, bool endsLeft)
+        {
+            if(startsLeft)
+            {
+                if(endsLeft)
+                {
+                    nextSectionData.Left = currentSectionData.Left;
+                    nextSectionData.DistanceLeft = currentSectionData.DistanceLeft - 100;
+                } else
+                {
+                    nextSectionData.Right = currentSectionData.Left;
+                    nextSectionData.DistanceRight = currentSectionData.DistanceLeft - 100;
+                }
+                currentSectionData.Left = null;
+                currentSectionData.DistanceLeft = 0;
+            } else {
+                if (endsLeft)
+                {
+                    nextSectionData.Left = currentSectionData.Right;
+                    nextSectionData.DistanceLeft = currentSectionData.DistanceRight - 100;
+                }
+                else
+                {
+                    nextSectionData.Right = currentSectionData.Right;
+                    nextSectionData.DistanceRight = currentSectionData.DistanceRight - 100;
+                }
+                currentSectionData.Right = null;
+                currentSectionData.DistanceRight = 0;
+            }
+        }
+
+        private int GetParticipantDistance(IParticipant participant)
+        {
+            return participant.Equipment.Performance * participant.Equipment.Speed;
+        }
 
         /// <summary>
         /// start the timer

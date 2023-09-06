@@ -7,7 +7,6 @@ class Program
     {
         Data.Initialize();
         Data.NextRace();
-        Data.NextRace();
         Visualize.Initialize(Data.CurrentRace);
         for (; ; )
         {
