@@ -18,7 +18,7 @@ namespace ControllerTest
         public void SetUp()
         {
             _competition = new Competition();
-            _competition.Tracks.Enqueue(new Track("Track1", new SectionTypes[]
+            _competition.Tracks.Enqueue(new Track("Track1", 3, new SectionTypes[]
                                         {
                                             SectionTypes.StartGrid,
                                             SectionTypes.StartGrid,

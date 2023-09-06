@@ -28,7 +28,7 @@ namespace ControllerTest
         [Test]
         public void NextTrack_OneInQueue_ReturnTrack()
         {
-            Track track = new Track("Track1", new SectionTypes[]
+            Track track = new Track("Track1", 2, new SectionTypes[]
                                    {
                                         SectionTypes.StartGrid,
                                         SectionTypes.StartGrid,
@@ -53,7 +53,7 @@ namespace ControllerTest
         [Test]
         public void NextTrack_OneInQueue_RemoveTrackFromQueue()
         {
-            Track track = new Track("Track2", new SectionTypes[]
+            Track track = new Track("Track2", 3, new SectionTypes[]
                                   {
                                         SectionTypes.StartGrid,
                                         SectionTypes.LeftCorner,
@@ -76,7 +76,7 @@ namespace ControllerTest
         [Test]
         public void NextTrack_TwoInQueue_ReturnNextTrack()
         {
-            Track track1 = new Track("Track1", new SectionTypes[]
+            Track track1 = new Track("Track1", 4, new SectionTypes[]
                                   {
                                         SectionTypes.StartGrid,
                                         SectionTypes.Straight,
@@ -87,7 +87,7 @@ namespace ControllerTest
                                         SectionTypes.Straight,
                                         SectionTypes.Finish
                                   });
-            Track track2 = new Track("Track2", new SectionTypes[]
+            Track track2 = new Track("Track2", 1, new SectionTypes[]
                                   {
                                         SectionTypes.StartGrid,
                                         SectionTypes.LeftCorner,

@@ -118,10 +118,13 @@ namespace SpaceRace
                 case SectionTypes.StartGrid:
                     return _startHorizontal;
                 case SectionTypes.Straight:
-                    if (direction == Rotation.West || direction == Rotation.East)
+                    if (direction == Rotation.East)
                     {
                         return _straightHorizontal;
-                    } 
+                    } else if (direction == Rotation.West)
+                    {
+                        return _straightHorizontal.Reverse().ToArray();
+                    }
                     return _straightVertical;
                 case SectionTypes.LeftCorner:
                     switch(direction)

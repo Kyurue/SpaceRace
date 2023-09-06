@@ -12,6 +12,7 @@ namespace Controller
         public List<IParticipant> Participants { get; set; }
         public DateTime StartTime { get; set; }
         private Random _random;
+        public Dictionary<IParticipant, int> LapsCompleted { get; }
         private Dictionary<Section, SectionData> Positions;
         private Timer _timer;
         public event EventHandler<DriversChangedEventArgs> DriversChanged;
@@ -22,16 +23,34 @@ namespace Controller
             this.Participants = participants;
             this._random = new Random(DateTime.Now.Millisecond);
             this.Positions = new Dictionary<Section, SectionData>();
+            this.LapsCompleted = new Dictionary<IParticipant, int>();
             _timer = new Timer();
-            _timer.Interval = 500;
+            _timer.Interval = 200;
             _timer.Elapsed += OnTimedEvent;
+            RandomizeEquipment();
             PlaceParticipantsOnStartgrid();
+
+            AddParticipantsToDictionairy();
+        }
+
+        private void AddParticipantsToDictionairy()
+        {
+            foreach(IParticipant participant in Participants)
+            {
+                LapsCompleted.Add(participant, -1);
+            }
         }
 
         private void OnTimedEvent(Object sender, ElapsedEventArgs e)
         {
             MoveAllParticipants();
             DriversChanged?.Invoke(this, new DriversChangedEventArgs(Data.CurrentRace.Track));
+
+            if(CheckRaceFinished())
+            {
+                _timer.Stop();
+                CleanDriversChanged();
+            }
         }
 
         private void MoveAllParticipants()
@@ -63,27 +82,39 @@ namespace Controller
             {
                 if(nextSectionData.Left == null)
                 {
-                    MoveParticipant(currentSectionData, nextSectionData, true, true);
+                    MoveParticipant(currentSectionData, nextSection, true, true);
                 } else if (nextSectionData.Right == null)
                 {
-                    MoveParticipant(currentSectionData, nextSectionData, true, false);
-                } 
+                    MoveParticipant(currentSectionData, nextSection, true, false);
+                }
             } else if(currentSectionData.DistanceRight >= 100)
             {
                 if (nextSectionData.Right == null)
                 {
-                    MoveParticipant(currentSectionData, nextSectionData, false, false);
+                    MoveParticipant(currentSectionData, nextSection, false, false);
                 }
                 else if (nextSectionData.Left == null)
                 {
-                    MoveParticipant(currentSectionData, nextSectionData, false, true);
+                    MoveParticipant(currentSectionData, nextSection, false, true);
                 }
             }
         }
 
-        private void MoveParticipant(SectionData currentSectionData, SectionData nextSectionData, bool startsLeft, bool endsLeft)
+        private void MoveParticipant(SectionData currentSectionData, Section nextSection, bool startsLeft, bool endsLeft)
         {
-            if(startsLeft)
+            if (nextSection.SectionType == SectionTypes.Finish)
+            {
+                if (startsLeft)
+                {
+                    UpdateLaps(currentSectionData, true);
+                }
+                else
+                {
+                    UpdateLaps(currentSectionData, false);
+                }
+            }
+            SectionData nextSectionData = GetSectionData(nextSection);
+            if (startsLeft && currentSectionData.Left != null)
             {
                 if(endsLeft)
                 {
@@ -96,7 +127,7 @@ namespace Controller
                 }
                 currentSectionData.Left = null;
                 currentSectionData.DistanceLeft = 0;
-            } else {
+            } else if (currentSectionData.Right != null) {
                 if (endsLeft)
                 {
                     nextSectionData.Left = currentSectionData.Right;
@@ -109,6 +140,26 @@ namespace Controller
                 }
                 currentSectionData.Right = null;
                 currentSectionData.DistanceRight = 0;
+            }
+        }
+
+        private void UpdateLaps(SectionData sectionData, bool isLeft)
+        {
+            if(isLeft)
+            {
+                LapsCompleted[sectionData.Left]++;
+                if (LapsCompleted[sectionData.Left] == Track.Rounds)
+                {
+                    LapsCompleted.Remove(sectionData.Left);
+                    sectionData.Left = null;
+                }
+            } else {
+                LapsCompleted[sectionData.Right]++;
+                if (LapsCompleted[sectionData.Right] == Track.Rounds)
+                {
+                    LapsCompleted.Remove(sectionData.Right);
+                    sectionData.Right = null;
+                }
             }
         }
 
@@ -138,6 +189,8 @@ namespace Controller
             return Positions.Values.Last();        
         }
 
+        private bool CheckRaceFinished() => Positions.Values.FirstOrDefault(a => a.Left != null || a.Right != null) == null;
+
         /// <summary>
         /// Randomizes participant equipment. 
         /// </summary>
@@ -145,8 +198,8 @@ namespace Controller
         {
             foreach (IParticipant participant in Participants)
             {
-                participant.Equipment.Quality = _random.Next();
-                participant.Equipment.Performance = _random.Next();
+                participant.Equipment.Quality = _random.Next(5, 13);
+                participant.Equipment.Performance = _random.Next(5, 13);
             }
         }
 
@@ -191,5 +244,7 @@ namespace Controller
             startGrids.Reverse();
             return startGrids;
         }
+
+        public void CleanDriversChanged() => DriversChanged = null;
     }
 }
