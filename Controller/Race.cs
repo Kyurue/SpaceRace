@@ -104,11 +104,11 @@ namespace Controller
         {
             if (nextSection.SectionType == SectionTypes.Finish)
             {
-                if (startsLeft)
+                if (startsLeft && currentSectionData.Left != null)
                 {
                     UpdateLaps(currentSectionData, true);
                 }
-                else
+                else if(!startsLeft && currentSectionData.Right != null)
                 {
                     UpdateLaps(currentSectionData, false);
                 }
@@ -127,7 +127,7 @@ namespace Controller
                 }
                 currentSectionData.Left = null;
                 currentSectionData.DistanceLeft = 0;
-            } else if (currentSectionData.Right != null) {
+            } else if (!startsLeft && currentSectionData.Right != null) {
                 if (endsLeft)
                 {
                     nextSectionData.Left = currentSectionData.Right;
