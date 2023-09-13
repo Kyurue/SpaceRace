@@ -475,3 +475,11 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+*.dll
+*.pdb
+Controller/obj/Controller.csproj.nuget.dgspec.json
+*.props
+*.cache
+*.editorconfig
+Model/obj/project.assets.json
+SpaceRace/obj/project.assets.json
